@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/zlaval/continuous-delivery-application/compare/1.1.0...1.2.0) (2022-06-14)
+
+
+### Features
+
+* add kustomize update step ([5c2635c](https://github.com/zlaval/continuous-delivery-application/commit/5c2635c7d92d1311dd69080bff3eab691da08bf8))
+
 # [1.1.0](https://github.com/zlaval/continuous-delivery-application/compare/1.0.0...1.1.0) (2022-06-14)
 
 
