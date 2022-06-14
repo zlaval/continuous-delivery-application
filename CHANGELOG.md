@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/zlaval/continuous-delivery-application/compare/1.0.0...1.1.0) (2022-06-14)
+
+
+### Features
+
+* add docker release step ([867e1b1](https://github.com/zlaval/continuous-delivery-application/commit/867e1b13452edb93b473b42dfd1302604eb22015))
+
 # 1.0.0 (2022-06-14)
 
 
