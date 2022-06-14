@@ -1,0 +1,36 @@
+{
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "gradle-semantic-release-plugin": "1.7.3",
+    "semantic-release": "^19.0.2"
+  },
+  "release": {
+    "tagFormat": "${version}",
+    "branches": [
+      {
+        "name": "master"
+      }
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      [
+        "@semantic-release/changelog",
+        {
+          "changelogFile": "CHANGELOG.md"
+        }
+      ],
+      "gradle-semantic-release-plugin",
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "gradle.properties",
+            "CHANGELOG.md"
+          ]
+        }
+      ]
+    ]
+  }
+}
