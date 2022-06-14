@@ -41,3 +41,19 @@ jobs:
           npx semantic-release
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+  release:
+    needs:
+      - semantic-release
+    runs-on: ubuntu-latest
+    env:
+      DOCKER_USER: ${{secrets.DOCKER_USER}}
+      DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: 'master'
+      - name: Run Gradle Test
+        uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee
+        with:
+          arguments: jib -x test
