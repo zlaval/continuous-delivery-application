@@ -10,7 +10,7 @@ plugins {
 }
 
 group = "com.zlrx.blog"
-version = "0.0.1-SNAPSHOT"
+version = project.findProperty("version")!!
 java.sourceCompatibility = JavaVersion.VERSION_17
 
 repositories {
