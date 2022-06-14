@@ -57,3 +57,36 @@ jobs:
         uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee
         with:
           arguments: jib -x test
+  update-kustomize:
+    needs:
+      - release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          ref: 'master'
+      - name: Get version
+        run: |
+          file="./gradle.properties"
+          value=$(grep version ${file} | cut -d' ' -f3)
+          echo "app_version=$value" >> $GITHUB_ENV
+      - name: Checkout Kustomize
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.PAT }}
+          repository: zlaval/continuous-delivery-manifests
+          ref: master
+      - name: Set Image
+        uses: stefanprodan/kube-tools@v1
+        with:
+          kubectl: 1.24.0
+          kustomize: 4.5.4
+          command: |
+            cd base
+            kustomize edit set image zalerix/continuous-delivery-example:latest=zalerix/continuous-delivery-example:${{ env.app_version }}
+            git config --global user.email "cibot@gmail.com"
+            git config --global user.name "CI bot"
+            git add .
+            git commit -m "build: update continuous-delivery-example image tag to ${{ env.app_version }}"
+            git push
