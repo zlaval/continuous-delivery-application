@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/zlaval/continuous-delivery-application/compare/1.2.0...1.3.0) (2022-06-15)
+
+
+### Features
+
+* modify name for new build ([e147cde](https://github.com/zlaval/continuous-delivery-application/commit/e147cdedc1c41c7e826dc0e00e6e8ac2c23ecb8b))
+
 # [1.2.0](https://github.com/zlaval/continuous-delivery-application/compare/1.1.0...1.2.0) (2022-06-14)
 
 
